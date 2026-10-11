@@ -24,6 +24,7 @@ android.allow_backup = True
 
 p4a.fork = kivy
 p4a.branch = v2024.01.21
+p4a.local_recipes = ./p4a_recipes
 
 [buildozer]
 log_level = 2
