@@ -10,7 +10,7 @@ source.exclude_dirs = build,bin,.buildozer,build-cache,web-cache,__pycache__
 source.exclude_patterns = *.apk,*.aab,*.zip,*.tar.gz,*.exe,*.bat,save.json
 
 version = 0.2
-requirements = python3,pygame
+requirements = python3==3.11.11,pygame
 
 orientation = landscape
 fullscreen = 1
@@ -21,9 +21,6 @@ android.minapi = 21
 android.ndk_api = 21
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
-
-p4a.fork = kivy
-p4a.branch = develop
 
 [buildozer]
 log_level = 2
