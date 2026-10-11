@@ -23,8 +23,7 @@ android.ndk_api = 26
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
 
-p4a.fork = kivy
-p4a.branch = v2024.01.21
+p4a.source_dir = ./python-for-android
 p4a.local_recipes = ./p4a_recipes
 
 [buildozer]

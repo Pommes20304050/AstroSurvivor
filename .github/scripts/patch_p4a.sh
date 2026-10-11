@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Pre-clones p4a and monkey-patches python3 recipe to disable _lzma + _uuid.
-# NDK sysroot has neither lzma.h nor libuuid; we don't need these optional
-# python stdlib modules for a pygame app.
+# Clones p4a to ./python-for-android (used via p4a.source_dir in buildozer.spec)
+# and monkey-patches python3 recipe to disable _lzma + _uuid optional modules.
+# NDK sysroot has neither lzma.h nor libuuid; a pygame app does not need them.
 set -euo pipefail
 
-P4A_DIR=.buildozer/android/platform/python-for-android
+P4A_DIR=./python-for-android
 
-mkdir -p .buildozer/android/platform
 if [ ! -d "$P4A_DIR" ]; then
   git clone --depth 1 --branch v2024.01.21 \
     https://github.com/kivy/python-for-android.git "$P4A_DIR"
