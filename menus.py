@@ -101,7 +101,7 @@ class MainMenu:
             r = self._btn_rect(i)
             draw_button(surf, r, label, self.fonts["med"], r.collidepoint(mx,my))
 
-        ver = self.fonts["small"].render("© 2025 AstroSurvivor", True, GRAY_DARK)
+        ver = self.fonts["small"].render("© 2026 AstroSurvivor", True, GRAY_DARK)
         surf.blit(ver, (10, self.sh-22))
 
 class HangarMenu:
