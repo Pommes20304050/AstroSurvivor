@@ -12,14 +12,48 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build APK with buildozer-action
-        id: buildozer
-        uses: digreatbrian/buildozer-action@v2
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python_version: '3.11'
-          buildozer_version: 'stable'
-          command: buildozer -v android debug
-          workdir: '.'
+          python-version: '3.11'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git zip unzip autoconf automake libtool libtool-bin libltdl-dev \
+            pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev \
+            build-essential ccache m4 texinfo gettext liblzma-dev uuid-dev
+
+      - name: Install Python build tools
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install "cython<3" buildozer
+
+      - name: Cache buildozer global dir
+        uses: actions/cache@v4
+        with:
+          path: ~/.buildozer
+          key: buildozer-global-ndkapi26-${{ hashFiles('buildozer.spec') }}
+
+      - name: Cache buildozer project dir
+        uses: actions/cache@v4
+        with:
+          path: .buildozer
+          key: buildozer-project-ndkapi26-${{ hashFiles('buildozer.spec') }}
+
+      - name: Build APK (debug)
+        env:
+          CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+        run: |
+          set -o pipefail
+          yes | buildozer -v android debug 2>&1 | tee build.log
 
       - name: Upload APK
         if: success()
@@ -27,3 +61,10 @@ jobs:
         with:
           name: AstroSurvivor-APK
           path: bin/*.apk
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
