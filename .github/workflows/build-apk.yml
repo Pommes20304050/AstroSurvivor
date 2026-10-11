@@ -40,43 +40,16 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.buildozer
-          key: buildozer-global-ndkapi26-${{ hashFiles('buildozer.spec') }}
+          key: buildozer-global-fix8-${{ hashFiles('buildozer.spec') }}
 
       - name: Cache buildozer project dir
         uses: actions/cache@v4
         with:
           path: .buildozer
-          key: buildozer-project-ndkapi26-${{ hashFiles('buildozer.spec') }}
+          key: buildozer-project-fix8-${{ hashFiles('buildozer.spec') }}
 
-      - name: Pre-clone p4a and inject disabled module patch
-        run: |
-          mkdir -p .buildozer/android/platform
-          if [ ! -d .buildozer/android/platform/python-for-android ]; then
-            git clone --depth 1 --branch v2024.01.21 \
-              https://github.com/kivy/python-for-android.git \
-              .buildozer/android/platform/python-for-android
-          fi
-          # Inject a monkey-patch into python3 recipe so that after extraction
-          # of the Python source, we disable _lzma and _uuid optional modules
-          # (NDK sysroot has neither lzma.h nor libuuid; we don't need them).
-          cat >> .buildozer/android/platform/python-for-android/pythonforandroid/recipes/python3/__init__.py <<'PYEOF'
-
-# ----- Local patch: disable _lzma / _uuid optional modules -----
-import os as _os
-_orig_prebuild_arch = Python3Recipe.prebuild_arch
-
-def _patched_prebuild_arch(self, arch):
-    _orig_prebuild_arch(self, arch)
-    src = self.get_build_dir(arch.arch)
-    setup_local = _os.path.join(src, 'Modules', 'Setup.local')
-    with open(setup_local, 'a') as _f:
-        _f.write('\n*disabled*\n_lzma\n_uuid\n')
-    print('[astrosurvivor] disabled _lzma and _uuid modules via Setup.local')
-
-Python3Recipe.prebuild_arch = _patched_prebuild_arch
-PYEOF
-          echo "Patched p4a python3 recipe:"
-          tail -20 .buildozer/android/platform/python-for-android/pythonforandroid/recipes/python3/__init__.py
+      - name: Pre-clone p4a and patch python3 recipe
+        run: bash .github/scripts/patch_p4a.sh
 
       - name: Build APK (debug)
         env:
