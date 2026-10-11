@@ -1224,56 +1224,56 @@ class GamePlay:
             ("five_thousand",   self.kills >= 5000,                       "EXTINCTION (5000)!",      (255,50,50)),
             ("ten_thousand",    self.kills >= 10000,                      "GENOZID (10000)!",        (255,50,50)),
             ("wave3",           self.wave >= 3,                           "WELLE 3!",                GREEN),
-            ("wave5",           self.wave >= 5,                           "WELLE 5 — REKRUT!",      CYAN),
-            ("wave10",          self.wave >= 10,                          "WAVE 10 — VETERAN!",      CYAN),
-            ("wave15",          self.wave >= 15,                          "WAVE 15 — KOMMANDANT!",   BLUE),
-            ("wave20",          self.wave >= 20,                          "WAVE 20 — ELITE!",        PURPLE),
-            ("wave25",          self.wave >= 25,                          "WAVE 25 — ADMIRAL!",      PURPLE),
-            ("wave30",          self.wave >= 30,                          "WAVE 30 — LEGENDE!",      GOLD),
-            ("wave40",          self.wave >= 40,                          "WAVE 40 — MYTHOS!",       GOLD),
-            ("wave50",          self.wave >= 50,                          "WAVE 50 — UNSTERBLICH!",  (255,50,50)),
+            ("wave5",           self.wave >= 5,                           "WELLE 5: REKRUT!",       CYAN),
+            ("wave10",          self.wave >= 10,                          "WAVE 10: VETERAN!",       CYAN),
+            ("wave15",          self.wave >= 15,                          "WAVE 15: KOMMANDANT!",    BLUE),
+            ("wave20",          self.wave >= 20,                          "WAVE 20: ELITE!",         PURPLE),
+            ("wave25",          self.wave >= 25,                          "WAVE 25: ADMIRAL!",       PURPLE),
+            ("wave30",          self.wave >= 30,                          "WAVE 30: LEGENDE!",       GOLD),
+            ("wave40",          self.wave >= 40,                          "WAVE 40: MYTHOS!",        GOLD),
+            ("wave50",          self.wave >= 50,                          "WAVE 50: UNSTERBLICH!",   (255,50,50)),
             ("combo3",          self.combo_mult >= 3,                     "COMBO ×3!",               YELLOW),
             ("combo5",          self.combo_mult >= 5,                     "COMBO ×5 MASTER!",        ORANGE_GLOW),
             ("combo10",         self.combo_mult >= 10,                    "UNAUFHALTBAR ×10!",       ORANGE_GLOW),
             ("streak20",        self.kill_streak >= 20,                   "20er STREAK!",            RED),
-            ("streak40",        self.kill_streak >= 40,                   "40er STREAK — MASSAKER!", PURPLE),
+            ("streak40",        self.kill_streak >= 40,                   "40er STREAK MASSAKER!",   PURPLE),
             ("collector",       total_coins >= 500,                       "500 COINS GESAMMELT!",    GOLD),
             ("hoarder",         total_coins >= 2000,                      "2000 COINS!",             GOLD),
-            ("tycoon",          total_coins >= 5000,                      "5000 COINS — TYCOON!",    GOLD),
-            ("mogul",           total_coins >= 10000,                     "10000 COINS — MOGUL!",    (255,215,0)),
+            ("tycoon",          total_coins >= 5000,                      "5000 COINS: TYCOON!",     GOLD),
+            ("mogul",           total_coins >= 10000,                     "10000 COINS: MOGUL!",     (255,215,0)),
             ("coins100_session",self.session_coins >= 100,                "100 COINS IM RUN!",       GOLD),
             ("coins300_session",self.session_coins >= 300,                "300 COINS IM RUN!",       GOLD),
             ("score5k",         self.score >= 5000,                       "5000 PUNKTE!",            CYAN),
             ("score10k",        self.score >= 10000,                      "10K SCORE!",              CYAN),
-            ("score25k",        self.score >= 25000,                      "25K SCORE — KÖNIG!",      PURPLE),
-            ("score50k",        self.score >= 50000,                      "50K — SCORE-LEGENDE!",    GOLD),
-            ("score100k",       self.score >= 100000,                     "100K — GÖTTLICH!",        (255,50,50)),
+            ("score25k",        self.score >= 25000,                      "25K SCORE: KÖNIG!",       PURPLE),
+            ("score50k",        self.score >= 50000,                      "50K SCORE LEGENDE!",      GOLD),
+            ("score100k",       self.score >= 100000,                     "100K: GÖTTLICH!",         (255,50,50)),
             ("boss_slayer",     self._boss_killed,                        "BOSS BESIEGT!",           GOLD),
             ("boss5",           self._bosses_killed >= 5,                 "5 BOSSE VERNICHTET!",     GOLD),
-            ("boss10",          self._bosses_killed >= 10,                "10 BOSSE — TITAN!",       PURPLE),
+            ("boss10",          self._bosses_killed >= 10,                "10 BOSSE: TITAN!",        PURPLE),
             ("boss_no_damage",  self._boss_killed and self._boss_wave_nodmg, "BOSS OHNE SCHADEN!",  (255,50,50)),
             ("level5",          self.level >= 5,                          "LEVEL 5!",                GREEN),
             ("level10",         self.level >= 10,                         "LEVEL 10!",               GREEN),
-            ("level15",         self.level >= 15,                         "LEVEL 15 — EXPERTE!",     CYAN),
-            ("level20",         self.level >= 20,                         "LEVEL 20 — MEISTER!",     PURPLE),
-            ("level30",         self.level >= 30,                         "LEVEL 30 — GROSSMEISTER!",GOLD),
+            ("level15",         self.level >= 15,                         "LEVEL 15: EXPERTE!",      CYAN),
+            ("level20",         self.level >= 20,                         "LEVEL 20: MEISTER!",      PURPLE),
+            ("level30",         self.level >= 30,                         "LEVEL 30: GROSSMEISTER!", GOLD),
             ("all_skills",      all_skills_max,                           "ALLE SKILLS MAXED!",      (255,50,50)),
             ("survivor2min",    self.session_time >= 120,                 "2 MIN ÜBERLEBT!",         GREEN),
             ("survivor5min",    self.session_time >= 300,                 "5 MIN ÜBERLEBT!",         GREEN),
-            ("survivor10min",   self.session_time >= 600,                 "10 MIN — EISERNER WILLE!",CYAN),
-            ("survivor15min",   self.session_time >= 900,                 "15 MIN — UNZERSTÖRBAR!",  PURPLE),
+            ("survivor10min",   self.session_time >= 600,                 "10 MIN EISERNER WILLE!",  CYAN),
+            ("survivor15min",   self.session_time >= 900,                 "15 MIN UNZERSTÖRBAR!",    PURPLE),
             ("close_call",      self._close_call,                         "HAARSCHARF!",             RED),
             ("full_hp_wave",    force_key == "no_damage_wave" and self.player.hp >= self.player.max_hp,
-                                                                          "MAKELLOS — VOLLES HP!",   GREEN),
+                                                                          "MAKELLOS VOLLES HP!",     GREEN),
             ("no_damage_wave",  force_key == "no_damage_wave",            "UNBERÜHRT!",              CYAN),
             ("no_damage_3wave", self._nodmg_streak >= 3,                  "3 WELLEN GEISTERHAFT!",   PURPLE),
             ("bomb_user",       self._bomb_used,                          "BOMBE EINGESETZT!",       RED),
-            ("bomb10",          self._bombs_used >= 10,                   "10 BOMBEN — SPRENGMEISTER!", RED),
+            ("bomb10",          self._bombs_used >= 10,                   "10 BOMBEN SPRENGMEISTER!", RED),
             ("all_weapons",     all_wpn_keys <= unlocked_wpns,            "VOLLES ARSENAL!",         ORANGE),
             ("max_ship",        any_ship_max,                             "SCHIFF VOLL AUFGERÜSTET!",GOLD),
             ("max_weapon",      any_wpn_max,                              "WAFFE MAXED!",            GOLD),
             ("first_skill_tree",tree_nodes >= 1,                          "ERSTER SKILL-KNOTEN!",    GREEN),
-            ("tree5",           tree_nodes >= 5,                          "5 KNOTEN — VERZWEIGT!",   CYAN),
+            ("tree5",           tree_nodes >= 5,                          "5 KNOTEN VERZWEIGT!",     CYAN),
             ("tree_full",       tree_full,                                "SKILL-TREE KOMPLETT!",    (255,50,50)),
         ]
         newly_unlocked = []
@@ -1762,7 +1762,7 @@ class GamePlay:
         ac = tuple(int(c * alpha) for c in ORANGE_GLOW)
         pygame.draw.rect(surf, ac, (px + 3, py + 3, pill_w - 6, 3), border_radius=6)
 
-        txt   = f"— WAVE {self.wave_announce_wave} —"
+        txt   = f"WAVE {self.wave_announce_wave}"
         pulse = abs(math.sin(self.global_time * 6)) * 0.3
         col   = tuple(int(c * alpha * (0.7 + 0.3 * pulse)) for c in ORANGE)
         gc    = (int(80 * alpha), int(30 * alpha), 0)
@@ -1791,7 +1791,7 @@ class GamePlay:
         pygame.draw.rect(surf, ORANGE, (cx, cy, cw, ch), 2, border_radius=16)
         pygame.draw.rect(surf, ORANGE_GLOW, (cx + 3, cy + 3, cw - 6, 3), border_radius=6)
 
-        msg = f"{t('wave')} {self.wave}  —  {t('survived')}!"
+        msg = f"{t('wave')} {self.wave}  {t('survived')}!"
         draw_glow_text(surf, msg, self.fn, ORANGE_GLOW, ORANGE_DARK,
                        sw // 2, cy + 32, True, glow_radius=3)
 
