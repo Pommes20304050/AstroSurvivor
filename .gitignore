@@ -1,0 +1,11 @@
+build/
+bin/
+.buildozer/
+__pycache__/
+*.pyc
+*.apk
+*.aab
+*.zip
+*.tar.gz
+*.exe
+save.json

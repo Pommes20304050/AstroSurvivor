@@ -1,0 +1,76 @@
+AstroSurvivor - Projektübersicht
+=================================
+
+Ein Wave-basiertes Space-Survival-Spiel, entwickelt mit Python 3 und Pygame.
+Der Spieler steuert ein Raumschiff, überlebt Gegnerwellen, sammelt Coins
+und kann sein Schiff, Waffen und Fähigkeiten upgraden.
+
+Starten: python main.py
+
+
+Aufbau der Dateien
+------------------
+
+main.py
+  Einstiegspunkt des Spiels. Initialisiert Pygame, lädt die Konfiguration
+  und Sprache, erstellt das Spielfenster und passt die Auflösung automatisch
+  an den Monitor an. Enthält die Hauptschleife, die zwischen den verschiedenen
+  Zuständen wechselt (Menü, Hangar, Einstellungen, Spiel).
+
+config.py
+  Verwaltet den Spielstand und die Einstellungen. Speichert alles als
+  JSON-Datei (save.json): Coins, erreichter Fortschritt, Lautstärke,
+  Auflösung, freigeschaltete Waffen, Skill-Tree-Punkte.
+
+constants.py
+  Zentrale Stelle für alle Spielwerte und Balancing-Parameter.
+  Hier sind die Schiff-Definitionen (HP, Speed, Spezialfähigkeiten),
+  Waffen-Werte (Schaden, Feuerrate, Projektilverhalten), Gegner-Typen
+  und der Aufbau des Skill-Trees definiert.
+
+localization.py
+  Zuständig für die Mehrsprachigkeit. Lädt Sprachdateien aus dem
+  locales-Ordner (de.json, en.json, es.json, fr.json) und gibt
+  übersetzte Texte anhand eines Schlüssels zurück.
+
+menus.py
+  Enthält alle Menü-Bildschirme: Hauptmenü, Hangar (Schiff- und
+  Waffenauswahl mit Upgrades), Skill-Tree, Einstellungen, Pause-Menü
+  und den Game-Over-Screen. Jedes Menü ist als eigene Klasse umgesetzt.
+
+gameplay.py
+  Das Herzstück des Spiels. Steuert das Wave-System (Gegner werden in
+  Wellen gespawnt, die immer schwieriger werden), berechnet Kollisionen
+  zwischen Projektilen und Gegnern, verwaltet Coin-Drops und das
+  Level-Up-System mit Skill-Auswahl während des Spiels.
+
+entities.py
+  Definiert alle Spielobjekte als eigene Klassen: Player (Spielerschiff),
+  Enemy (verschiedene Gegnertypen), Bullet (Projektile) und Pickup
+  (einsammelbare Items wie Coins oder HP). Jede Klasse hat eigene
+  Methoden für Bewegung (update) und Darstellung (draw).
+
+draw_utils.py
+  Sammlung von Hilfsfunktionen für die Grafikausgabe. Zeichnet
+  abgerundete UI-Elemente, Lebensbalken, Tooltips und visuelle
+  Effekte wie Bloom/Glow. Alle UI-Größen werden dynamisch skaliert,
+  damit das Spiel auf verschiedenen Auflösungen gut aussieht.
+
+particles.py
+  Zuständig für visuelle Effekte: Explosions-Partikel bei Treffern,
+  Floating Texts (z.B. "+10 Coins"), und Off-Screen-Indikatoren
+  die anzeigen, wo sich Gegner außerhalb des sichtbaren Bereichs befinden.
+
+sounds.py
+  Generiert alle 13 Spielsounds prozedural per Code (Sinuswellen,
+  Rauschen, Frequenzverläufe). Es werden keine externen Audiodateien
+  benötigt - alle Sounds entstehen beim Programmstart aus mathematischen
+  Berechnungen.
+
+
+Ordnerstruktur
+--------------
+
+assets/           Grafiken (Icons, Achievement-Bilder, Schriftarten)
+locales/          Sprachdateien (de.json, en.json, es.json, fr.json)
+save.json         Spielstand (wird automatisch erstellt/aktualisiert)
