@@ -10,7 +10,7 @@ source.exclude_dirs = build,bin,.buildozer,build-cache,web-cache,__pycache__
 source.exclude_patterns = *.apk,*.aab,*.zip,*.tar.gz,*.exe,*.bat,save.json
 
 version = 0.2
-requirements = python3,pygame
+requirements = python3,pygame-ce
 
 orientation = landscape
 fullscreen = 1
